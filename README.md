@@ -65,13 +65,6 @@ Notice that each of the nodes of the tree is represented using JSON notation. Ea
 * `id` is an integer that identifies the node. It starts with 0 for the root of the tree, then 1 and 2 for the root's children, and so on. These ids are going to be used for the next field.
 * `parent` is the id of the parent. Note in the list above, root's parent id is -1 since it doesn't have a parent. The nodes (operator: * id: 1) and (operand: 6 id: 2) would both have their `parent` field value set to 0, as the node with `id=0` is their parent.
 
-In the image below appreciate the values of some fields for each of the nodes of the expression tree shown in the boxes next to the nodes. The boxes that show values in red, are values that are calculated using the evaluation of their subtrees.
-
-<img src="./images/decorated-tree.png" alt="alt text" width="600">
-
-> You will need to produce the exact same output, note the pattern in which the nodes get their id. What kind of traversal do you think is used to construct the step-by-step evaluation?
-
-
 ## What you are Given
 
 You are given the following files:
@@ -128,23 +121,3 @@ public:
 {"value":2.00, "operator":"#", "operand":true, "id":6, "parent":5}
 {"value":5.00, "operator":"#", "operand":true, "id":7, "parent":5}
 {"value":1.00, "operator":"#", "operand":true, "id":8, "parent":4}
-
-```
-
-* Expression = `4 3 + 2 5 * 1 / -`
-* `useLevel = true`
-
-```
-{"value":-3.00, "operator":"-", "operand":false}
-	{"value":7.00, "operator":"+", "operand":false}
-		{"value":4.00, "operator":"#", "operand":true}
-		{"value":3.00, "operator":"#", "operand":true}
-	{"value":10.00, "operator":"/", "operand":false}
-		{"value":10.00, "operator":"*", "operand":false}
-			{"value":2.00, "operator":"#", "operand":true}
-			{"value":5.00, "operator":"#", "operand":true}
-		{"value":1.00, "operator":"#", "operand":true}```
-
-```
-
-> Note that when `useLevel` is true, the fields `id` and `parent` are not necessary as the parent/children relationship is represented in the output.
